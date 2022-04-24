@@ -5,7 +5,7 @@
 #define ON LOW
 #define OFF HIGH
 
-# STASSID and STAPSK passed in as -D compile time defines
+// STASSID and STAPSK passed in as -D compile time defines
 const char* ssid = STASSID;
 const char* password = STAPSK;
 
@@ -50,11 +50,9 @@ void loop() {
     delay(1000);
     digitalWrite(RELAY_PIN, OFF);
   } else if (req.indexOf(F("/button/on")) != -1) {
-    digitalWrite(LED_BUILTIN, OFF);
-    digitalWrite(RELAY_PIN, OFF);
-  } else if (req.indexOf(F("/button/off")) != -1) {
     digitalWrite(RELAY_PIN, ON);
-    digitalWrite(LED_BUILTIN, ON);
+  } else if (req.indexOf(F("/button/off")) != -1) {
+    digitalWrite(RELAY_PIN, OFF);
   }
 
   while (client.available()) {
